@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #091921;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before, body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+body::before {
+  background: linear-gradient(#e91e63, #ffc107);
+  clip-path: circle(22% at 30% 20%);
+}
+
+body::after {
+  background: linear-gradient(#ffffff, #da00ff);
+  clip-path: circle(20% at 70% 90%);
+}
+
+.container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  width: 95vw;    /* almost full width on small devices */
+  max-width: 400px; /* limit max width on large devices */
+  margin: 0 auto;
+  padding: 0.5rem 0.5rem;
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 80px;
+  gap: 0;
+}
+
+.value {
+  grid-column: span 4;
+  height: 140px;
+  width: 100%;
+  text-align: right;
+  border: none;
+  outline: none;
+  padding: 15px;
+  font-size: 2.5rem;
+  background: transparent;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  resize: none;
+  line-height: 1.2;
+}
+
+.calculator span {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  font-weight: 400;
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+span.clear {
+  grid-column: span 2;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+span.plus {
+  grid-row: span 2;
+  height: 100%;
+}
+
+span.equal {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.calculator span:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.15s ease-in-out;
+}
+
+.calculator span:active {
+  background: #14ff47;
+  color: #192f00;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.value::placeholder {
+  color: rgb(255, 255, 255);
+  opacity: 0.3;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 95vw; /* fill almost whole width */
+    padding: 0.4rem 0.4rem;
+  }
+
+  .calculator {
+    grid-auto-rows: 75px;
+  }
+
+  .value {
+    font-size: 2rem;
+    height: 120px;
+    padding: 12px;
+  }
+
+  .calculator span {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: 98vw;
+    padding: 0.3rem 0.3rem;
+  }
+
+  .calculator {
+    grid-auto-rows: 65px;
+  }
+
+  .value {
+    font-size: 1.7rem;
+    height: 100px;
+    padding: 10px;
+  }
+
+  .calculator span {
+    font-size: 1.1rem;
+  }
+}
